@@ -15,4 +15,8 @@
 //= require metisMenu/jquery.metisMenu.js
 //= require pace/pace.min.js
 //= require slimscroll/jquery.slimscroll.min.js
+//= require turbolinks
+//= require bootstrap-datepicker
+//= require dataTables/jquery.dataTables
+//= require jquery/clockpicker
 //= require_tree .

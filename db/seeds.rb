@@ -5,3 +5,9 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+Evento.create!(descricao: 'Evento1', tipoEvento: 'Casamento', numPessoas: '20')
+Evento.create!(descricao: 'Evento2', tipoEvento: 'Casamento', numPessoas: '10')
+Evento.create!(descricao: 'Evento3', tipoEvento: 'Casamento', numPessoas: '220')
+Evento.create!(descricao: 'Evento4', tipoEvento: 'Casamento', numPessoas: '202')
+Evento.create!(descricao: 'Evento5', tipoEvento: 'Casamento', numPessoas: '230')
+Evento.create!(descricao: 'Evento6', tipoEvento: 'Casamento', numPessoas: '1')

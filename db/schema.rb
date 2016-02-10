@@ -11,6 +11,81 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20160203162708) do
+
+  create_table "eventos", force: :cascade do |t|
+    t.string   "descricao"
+    t.string   "tipoEvento"
+    t.string   "localEvento"
+    t.string   "eventoParent"
+    t.date     "dataInicio"
+    t.datetime "dataInicioEvento"
+    t.datetime "dataFimEvento"
+    t.integer  "numPessoas"
+    t.float    "precoPorPessoa"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.time     "horaInicio"
+    t.time     "horaFim"
+    t.time     "duracaoEvento"
+  end
+
+  create_table "funcionarios", force: :cascade do |t|
+    t.string   "nome",               limit: 200
+    t.string   "morada"
+    t.string   "contacto"
+    t.string   "email"
+    t.string   "contribuinte"
+    t.string   "observacoes"
+    t.string   "fotografia"
+    t.integer  "prioridade"
+    t.boolean  "activo"
+    t.boolean  "recibo"
+    t.float    "precoHora1"
+    t.float    "precoHora2"
+    t.float    "precoDia"
+    t.string   "localTrabalho"
+    t.float    "totalRecebido"
+    t.datetime "dataUltimoTrabalho"
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+  end
+
+  create_table "pagamentos", force: :cascade do |t|
+    t.float    "precoHora1"
+    t.float    "numTotalHoras"
+    t.float    "numHorasPagas"
+    t.boolean  "regularizado"
+    t.datetime "dataPagamento"
+    t.float    "precoTotal"
+    t.datetime "dataCriacao"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.integer  "trabalho_id"
+    t.integer  "funcionario_id"
+    t.integer  "evento_id"
+  end
+
+  add_index "pagamentos", ["evento_id"], name: "index_pagamentos_on_evento_id"
+  add_index "pagamentos", ["funcionario_id"], name: "index_pagamentos_on_funcionario_id"
+  add_index "pagamentos", ["trabalho_id"], name: "index_pagamentos_on_trabalho_id"
+
+  create_table "trabalhos", force: :cascade do |t|
+    t.float    "noteumTotalHoras"
+    t.float    "numHorasPagas"
+    t.float    "precoHora1"
+    t.float    "precoDia"
+    t.float    "precoTotal"
+    t.boolean  "regularizado"
+    t.boolean  "recibo"
+    t.datetime "dataPagamento"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.integer  "evento_id"
+    t.integer  "funcionario_id"
+  end
+
+  add_index "trabalhos", ["evento_id"], name: "index_trabalhos_on_evento_id"
+  add_index "trabalhos", ["funcionario_id"], name: "index_trabalhos_on_funcionario_id"
 
 end

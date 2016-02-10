@@ -11,5 +11,8 @@
  *= require_self
  *= require font-awesome
  *= require animate/animate.css
+ *= require dataTables/jquery.dataTables
+ *= require bootstrap-datepicker
  *= require style
+ *= require jquery/clockpicker
  */

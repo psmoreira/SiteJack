@@ -1,4 +1,8 @@
 Myapp::Application.routes.draw do
+  resources :pagamentos
+  resources :trabalhos
+  resources :funcionarios
+  resources :eventos
   get "home/index"
   get "home/minor"
   # The priority is based upon order of creation: first created -> highest priority.

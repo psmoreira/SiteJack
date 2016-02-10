@@ -8,6 +8,8 @@
 
 $(document).ready(function () {
 
+$.fn.datepicker.defaults.format = "dd/mm/yyyy";
+
 
     // Add body-small class if window less than 768px
     if ($(this).width() < 769) {
@@ -290,5 +292,3 @@ function WinMove() {
         })
         .disableSelection();
 }
-
-
