@@ -1,0 +1,41 @@
+I"�(function() {
+  var footerCallback;
+
+  footerCallback = function() {
+    var column, total;
+    column = this.api().column(1);
+    total = column.data().map(parseCurrency).reduce(function(sum, value) {
+      return sum + value;
+    });
+    return $(column.footer()).html((total.toFixed(2)) + " €");
+  };
+
+  $(function() {
+    return $('#pagamentos-table').dataTable({
+      processing: true,
+      serverSide: true,
+      ajax: $('#pagamentos-table').data('source'),
+      pagingType: 'full_numbers',
+      language: {
+        "sProcessing": "A processar...",
+        "sLengthMenu": "Mostrar _MENU_ registos",
+        "sZeroRecords": "Não foram encontrados resultados",
+        "sInfo": "Mostrando de _START_ até _END_ de _TOTAL_ registos",
+        "sInfoEmpty": "Mostrando de 0 até 0 de 0 registos",
+        "sInfoFiltered": "(filtrado de _MAX_ registos no total)",
+        "sInfoPostFix": "",
+        "sSearch": "Procurar:",
+        "sUrl": "",
+        "oPaginate": {
+          "sFirst": "Primeiro",
+          "sPrevious": "Anterior",
+          "sNext": "Seguinte",
+          "sLast": "Último"
+        }
+      },
+      footerCallback: footerCallback
+    });
+  });
+
+}).call(this);
+:ET

@@ -1,0 +1,36 @@
+<%= form_for('Trabalho', as: 'trabalhos', url: regularizar_funcionario_trabalhos_path(@funcionario.id)) do |f| %>
+<table class="table table-striped table-bordered table-hover  dataTable" id="trabalhos-table", data-source="<%= funcionario_trabalhos_path(funcionario_id: @funcionario.id,format: :json) %>">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Evento</th>
+      <th>Tipo de evento</th>
+      <th>Data</th>
+      <th>Hora início</th>
+      <th>Hora fim</th>
+      <th>Horas pagas</th>
+      <th>Total a pagar</th>
+      <th>Processar</th>
+      <th>Opções</th>
+    </tr>
+  </thead>
+  <tfoot valortotal="0" id="footer-trabalhos-table">
+    <tr>
+      <th colspan="7" class="dt-right">A pagar:</th>
+      <th>A pagar: 0€</th>
+      <th colspan="2">
+        <div>
+          <%= f.submit 'Efectuar Pagamento', data: { confirm: 'Tem a certeza que pretende pagar o valor em questão?', no_turbolink: true}, class: 'btn btn-w-m btn-primary'  %>
+        </div></th>
+      </tr>
+    </tfoot>
+    <tbody>
+    </tbody>
+  </table>
+
+  <% end %>
+  <script type="text/javascript" >
+  $(document).ready(function() {
+    jQuery(".best_in_place").best_in_place();
+  });
+  </script>

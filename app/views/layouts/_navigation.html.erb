@@ -28,6 +28,11 @@
                 <i class="fa fa-desktop"></i> <span class="nav-label">Eventos</span>
                 <% end %>
             </li>
+            <li class="<%= 'active' if current_page?('/funcionarios') %>">
+                <%= link_to funcionarios_path, data: { no_turbolink: true }, remote: true do %>
+                <i class="fa fa-desktop"></i> <span class="nav-label">Funcionários</span>
+                <% end %>
+            </li>
         </ul>
 
     </div>

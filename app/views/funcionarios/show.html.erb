@@ -1,0 +1,101 @@
+<div class="row wrapper white-bg page-heading">
+  <div class="col-lg-12">
+    <h2>Funcionário</h2>
+  </div>
+</div>
+<div class = "row wrapper white-bg">
+  <div class="col-lg-12">
+    <div class="ibox-content text-left p-md">
+      <p id="notice" style="color:red;"><%= notice %></p>
+
+      <div class="col-lg-2 vcenter">
+        <%= image_tag @funcionario.avatar.url(:thumb), class: 'img-circle m-t-lg img-responsive vcenter' %>
+      </div>
+      <div class="col-lg-5">
+        <p>
+          <strong>Nome:</strong>
+          <%= @funcionario.nome %>
+        </p>
+        <p>
+          <strong>Morada:</strong>
+          <%= @funcionario.morada %>
+        </p>
+        <p>
+          <strong>Contacto:</strong>
+          <%= @funcionario.contacto%>
+        </p>
+        <p>
+          <strong>Email:</strong>
+          <%= @funcionario.email %>
+        </p>
+        <p>
+          <strong>Contribuinte:</strong>
+          <%= @funcionario.contribuinte %>
+        </p>
+        <p>
+          <strong>Local de Trabalho:</strong>
+          <%= @funcionario.localTrabalho %>
+        </p>
+      </div>
+      <div class="col-lg-5">
+        <p>
+          <strong>Activo:</strong>
+          <i class="<%= @funcionario.activo ? "fa fa-check-circle fa-1x text-success" : "fa fa-times-circle fa-1x text-danger" %>">
+          </i>
+        </p>
+        <p>
+          <strong>Recibo:</strong>
+          <i class="<%= @funcionario.recibo ? "fa fa-check-circle fa-1x text-success" : "fa fa-times-circle fa-1x text-danger" %>">
+          </i>
+        </p>
+        <p>
+          <strong>Preço Hora 1:</strong>
+          <%= number_to_currency(@funcionario.precoHora1) %>&nbsp;&nbsp;
+          <strong>Preço Hora 2:</strong>
+          <%= number_to_currency(@funcionario.precoHora2) %>&nbsp;&nbsp;
+        </p>
+        <p>
+          <strong>Preço Dia:</strong>
+          <%= number_to_currency(@funcionario.precoDia) %>&nbsp;&nbsp;
+        </p>
+        <p>
+          <strong>Total Recebido:</strong>
+          <%= number_to_currency(@funcionario.totalRecebido) %>
+        </p>
+        <p>
+          <strong>Observações:</strong>
+          <%= @funcionario.observacoes %>
+        </p>
+
+      </div>
+    </div>
+    <div class="ibox-content text-left p-md">
+      <%= link_to 'Editar', edit_funcionario_path(@funcionario), data: { no_turbolink: true }, class: 'btn btn-info btn-sm'  %>
+      <%= link_to 'Voltar', funcionarios_path , data: { no_turbolink: true }, class: 'btn btn-danger btn-sm' %>
+    </div>
+
+  </div>
+</div>
+<div class="row wrapper wrapper-content white-bg animated fadeIn">
+  <div class="col-lg-12">
+    <div class="tabs-container">
+      <ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" href="#tab-1" aria-expanded="false">Processamento</a></li>
+        <li class=""><a data-toggle="tab" href="#tab-2" aria-expanded="true"> Pagamentos Efetuados</a></li>
+
+      </ul>
+      <div class="tab-content">
+        <div id="tab-1" class="tab-pane active">
+          <div class="panel-body">
+            <%= render partial: 'trabalhos/index' %>
+          </div>
+        </div>
+        <div id="tab-2" class="tab-pane">
+          <div class="panel-body">
+            <%= render partial: 'pagamentos/index' %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

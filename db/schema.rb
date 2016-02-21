@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160203162708) do
+ActiveRecord::Schema.define(version: 20160214163545) do
 
   create_table "eventos", force: :cascade do |t|
     t.string   "descricao"
@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 20160203162708) do
   end
 
   create_table "funcionarios", force: :cascade do |t|
-    t.string   "nome",               limit: 200
+    t.string   "nome",                limit: 200
     t.string   "morada"
     t.string   "contacto"
     t.string   "email"
@@ -47,8 +47,12 @@ ActiveRecord::Schema.define(version: 20160203162708) do
     t.string   "localTrabalho"
     t.float    "totalRecebido"
     t.datetime "dataUltimoTrabalho"
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
   create_table "pagamentos", force: :cascade do |t|
@@ -83,6 +87,12 @@ ActiveRecord::Schema.define(version: 20160203162708) do
     t.datetime "updated_at",       null: false
     t.integer  "evento_id"
     t.integer  "funcionario_id"
+    t.time     "horaInicio"
+    t.time     "horaFim"
+    t.time     "duracaoTrabalho"
+    t.date     "dataTrabalho"
+    t.datetime "dataHoraInicio"
+    t.datetime "dataHoraFim"
   end
 
   add_index "trabalhos", ["evento_id"], name: "index_trabalhos_on_evento_id"

@@ -1,0 +1,12 @@
+I"é(function() {
+  $(function() {
+    return $('#eventos-table').dataTable({
+      processing: true,
+      serverSide: true,
+      ajax: $('#eventos-table').data('source'),
+      pagingType: 'full_numbers'
+    });
+  });
+
+}).call(this);
+:ET

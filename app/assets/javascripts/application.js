@@ -11,12 +11,16 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery/jquery-2.1.1.js
+//= require jquery_ujs
 //= require bootstrap-sprockets
+//= require data-confirm-modal
 //= require metisMenu/jquery.metisMenu.js
 //= require pace/pace.min.js
 //= require slimscroll/jquery.slimscroll.min.js
-//= require turbolinks
 //= require bootstrap-datepicker
 //= require dataTables/jquery.dataTables
 //= require jquery/clockpicker
+//= require best_in_place
+//= require best_in_place.jquery-ui
 //= require_tree .
+//= require helper.js

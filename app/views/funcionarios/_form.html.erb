@@ -1,0 +1,92 @@
+<%= form_for(@funcionario) do |f| %>
+<% if @funcionario.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(@funcionario.errors.count, "error") %> prohibited this funcionario from being saved:</h2>
+
+  <ul>
+    <% @funcionario.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+<br>
+<div class="row">
+
+
+  <div class="col-sm-6 b-r">
+
+    <div class="form-group">
+      <%= f.label :nome, "Nome" %><br>
+      <%= f.text_field :nome, class: 'form-control'  %>
+    </div>
+    <div class="form-group">
+      <%= f.label :morada, "Morada" %><br>
+      <%= f.text_field :morada, class: 'form-control'  %>
+    </div>
+    <div class="form-group">
+      <%= f.label :contacto, "Contacto" %><br>
+      <%= f.text_field :contacto, class: 'form-control'  %>
+    </div>
+    <div class="form-group">
+      <%= f.label :email, "Email" %><br>
+      <%= f.text_field :email, class: 'form-control'  %>
+    </div>
+    <div class="form-group">
+      <%= f.label :contribuinte, "Contribuinte" %><br>
+      <%= f.text_field :contribuinte, class: 'form-control'  %>
+    </div>
+    <div class="form-group">
+      <%= f.label :localTrabalho, "Local de Trabalho" %><br>
+      <%= f.select :localTrabalho, options_for_select([['Sala'],['Cozinha'], ['Outro']]),{}, { :class => 'form-control m-b' }  %>
+    </div>
+    <div class="form-group">
+      <%= f.label :prioridade, "Prioridade" %><br>
+      <%= f.select :prioridade, options_for_select([['1'],['2'],['3'],['4'],['5']]),{}, { :class => 'form-control m-b' }  %>
+    </div>
+  </div>
+  <div class="col-sm-6">
+
+    <div class="form-group">
+        <%= f.label :activo, "Activo" %><br>
+        <%= f.check_box :activo%>
+    </div>
+
+    <div class="form-group">
+ <%= f.label :recibo, "Recibo" %><br>
+        <%= f.check_box :recibo %>
+
+    </div>
+
+    <div class="form-group">
+      <%= f.label :precoHora1, "Preço Hora 1" %><br>
+      <%= f.text_field :precoHora1, class: 'form-control'  %>
+    </div>
+    <div class="form-group">
+      <%= f.label :precoHora2, "Preço Hora 2" %><br>
+      <%= f.text_field :precoHora2, class: 'form-control'  %>
+    </div>
+    <div class="form-group">
+      <%= f.label :precoDia, "Preço Dia" %><br>
+      <%= f.text_field :precoDia, class: 'form-control'  %>
+    </div>
+    <div class="form-group">
+      <%= f.label :observacoes, "Observações" %><br>
+      <%= f.text_area :observacoes, class: 'form-control'  %>
+    </div>
+    <div class="form-group">
+      <%= f.label :avatar, "Fotografia" %><br>
+       <%= f.file_field :avatar, as: :file %>
+    </div>
+
+  </div>
+</div>
+<div class"row">
+  <div class="form-group">
+    <div class="actions">
+      <%= f.submit 'Guardar', data: { no_turbolink: true }, class: 'btn btn-w-m btn-primary'  %>
+      <%= link_to 'Voltar', funcionarios_path, data: { no_turbolink: true }, class: 'btn btn-w-m btn-danger'  %>
+    </div>
+  </div>
+</div>
+<% end %>

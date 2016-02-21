@@ -1,0 +1,64 @@
+I"�(function() {
+  $(function() {
+    var table;
+    table = $('#trabalhos-table').dataTable({
+      processing: true,
+      serverSide: true,
+      ajax: $('#trabalhos-table').data('source'),
+      pagingType: 'full_numbers',
+      language: {
+        "sProcessing": "A processar...",
+        "sLengthMenu": "Mostrar _MENU_ registos",
+        "sZeroRecords": "Não foram encontrados resultados",
+        "sInfo": "Mostrando de _START_ até _END_ de _TOTAL_ registos",
+        "sInfoEmpty": "Mostrando de 0 até 0 de 0 registos",
+        "sInfoFiltered": "(filtrado de _MAX_ registos no total)",
+        "sInfoPostFix": "",
+        "sSearch": "Procurar:",
+        "sUrl": "",
+        "oPaginate": {
+          "sFirst": "Primeiro",
+          "sPrevious": "Anterior",
+          "sNext": "Seguinte",
+          "sLast": "Último"
+        }
+      },
+      columnDefs: [
+        {
+          className: 'dt-body-center',
+          targets: 8
+        }
+      ]
+    });
+    $('#trabalhos-table tbody').on('click', 'input.updateFooter', function() {
+      var $row, api, newVal, num, rowdata, val, valor;
+      api = table.api();
+      $row = $(this).closest('tr');
+      rowdata = table.fnGetData($row);
+      valor = rowdata[7];
+      val = $('#footer-trabalhos-table').attr('valortotal');
+      num = 0;
+      if (typeof valor === 'string') {
+        num = valor.replace(/,+/g, '.').replace(/[^(0-9.)]+/g, '') * 1;
+      } else if (typeof valor === 'number') {
+        num = valor;
+      } else {
+        num = 0;
+      }
+      newVal = this.checked ? parseFloat(val) + num : parseFloat(val) - num;
+      if (newVal < 0) {
+        newVal = 0;
+      }
+      $('#footer-trabalhos-table').attr('valortotal', newVal);
+      return $(api.column(7).footer()).html(newVal.toFixed(2) + '€');
+    });
+    return $('#trabalhos-table').on('draw.dt', function() {
+      var api;
+      $('#footer-trabalhos-table').attr('valortotal', '0');
+      api = table.api();
+      return $(api.column(7).footer()).html('0€');
+    });
+  });
+
+}).call(this);
+:ET

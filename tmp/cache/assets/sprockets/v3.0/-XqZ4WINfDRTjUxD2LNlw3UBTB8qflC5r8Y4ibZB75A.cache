@@ -1,0 +1,46 @@
+I"�(function() {
+  $(function() {
+    $('#trabalhos-table').dataTable({
+      processing: true,
+      serverSide: true,
+      ajax: $('#trabalhos-table').data('source'),
+      pagingType: 'full_numbers',
+      language: {
+        "sProcessing": "A processar...",
+        "sLengthMenu": "Mostrar _MENU_ registos",
+        "sZeroRecords": "Não foram encontrados resultados",
+        "sInfo": "Mostrando de _START_ até _END_ de _TOTAL_ registos",
+        "sInfoEmpty": "Mostrando de 0 até 0 de 0 registos",
+        "sInfoFiltered": "(filtrado de _MAX_ registos no total)",
+        "sInfoPostFix": "",
+        "sSearch": "Procurar:",
+        "sUrl": "",
+        "oPaginate": {
+          "sFirst": "Primeiro",
+          "sPrevious": "Anterior",
+          "sNext": "Seguinte",
+          "sLast": "Último"
+        }
+      },
+      columnDefs: [
+        {
+          className: 'dt-body-center',
+          targets: 8
+        }
+      ]
+    });
+    return $(document).on('click', 'input.updateFooter', function() {
+      var api, oTable1, ok, row, rowIndex;
+      oTable1 = $('#trabalhos-table').dataTable;
+      api = oTable1.api();
+      row = $(this).closest('tr');
+      rowIndex = oTable1.cell($(this.parentElement).closest('tr')[0]).index();
+      ok = this.checked ? 1 : 0;
+      $(api.column(5).footer()).html('Indice: ' + rowIndex + '€');
+      api = oTable1.api();
+      return oTable1.fnDraw();
+    });
+  });
+
+}).call(this);
+:ET

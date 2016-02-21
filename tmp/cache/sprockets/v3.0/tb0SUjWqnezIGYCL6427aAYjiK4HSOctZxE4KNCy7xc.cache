@@ -1,0 +1,84 @@
+I"Q(function() {
+  $(function() {
+    $('#trabalhos-table').dataTable({
+      processing: true,
+      serverSide: true,
+      ajax: $('#trabalhos-table').data('source'),
+      pagingType: 'full_numbers',
+      language: {
+        "sProcessing": "A processar...",
+        "sLengthMenu": "Mostrar _MENU_ registos",
+        "sZeroRecords": "Não foram encontrados resultados",
+        "sInfo": "Mostrando de _START_ até _END_ de _TOTAL_ registos",
+        "sInfoEmpty": "Mostrando de 0 até 0 de 0 registos",
+        "sInfoFiltered": "(filtrado de _MAX_ registos no total)",
+        "sInfoPostFix": "",
+        "sSearch": "Procurar:",
+        "sUrl": "",
+        "oPaginate": {
+          "sFirst": "Primeiro",
+          "sPrevious": "Anterior",
+          "sNext": "Seguinte",
+          "sLast": "Último"
+        }
+      }
+    });
+    return {
+      columns: [
+        {
+          width: "0%",
+          className: "dont_show",
+          searchable: false,
+          orderable: false
+        }, {
+          width: "15%"
+        }, {
+          width: "35%",
+          className: "row_config"
+        }, {
+          width: "null",
+          className: "row_config",
+          searchable: false,
+          orderable: false
+        }, {
+          width: "null",
+          className: "row_config",
+          searchable: false,
+          orderable: false
+        }, {
+          width: "5%",
+          className: "center",
+          searchable: false,
+          orderable: false
+        }, {
+          width: "5%",
+          className: "center",
+          searchable: false,
+          orderable: false
+        }, {
+          width: "5%",
+          className: "center",
+          searchable: false,
+          orderable: false
+        }, {
+          width: "5%",
+          className: "center",
+          searchable: false,
+          orderable: false
+        }, {
+          width: "5%",
+          className: "center",
+          searchable: false,
+          orderable: false
+        }, {
+          width: "5%",
+          className: "center",
+          searchable: false,
+          orderable: false
+        }
+      ]
+    };
+  });
+
+}).call(this);
+:ET
