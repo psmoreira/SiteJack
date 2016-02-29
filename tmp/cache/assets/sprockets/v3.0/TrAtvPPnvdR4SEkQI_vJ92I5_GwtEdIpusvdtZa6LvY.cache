@@ -1,0 +1,11 @@
+I"�(function() {
+  $(function() {
+    return dataConfirmModal.setDefaults({
+      title: 'Confirmação',
+      commit: 'Ok',
+      cancel: 'Cancelar'
+    });
+  });
+
+}).call(this);
+:ET

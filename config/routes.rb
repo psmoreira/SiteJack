@@ -3,6 +3,7 @@ Myapp::Application.routes.draw do
   resources :funcionarios do
      resources :trabalhos do
        post :regularizar, on: :collection
+       get :check
      end
      resources :pagamentos
   end

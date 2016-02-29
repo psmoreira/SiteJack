@@ -5,6 +5,8 @@ class TrabalhosController < ApplicationController
   # GET /trabalhos.json
   def index
 
+    @sum_trabalho = 0
+
     respond_to do |format|
       format.html
       format.json { render json: TrabalhoDatatable.new(view_context) }
@@ -65,10 +67,15 @@ class TrabalhosController < ApplicationController
     end
   end
 
+  def check
+    render json: @trabalho.to_json
+  end
+
   def regularizar
     #recebe a collection
     #Para os Id recebidos
       # chama função que regulariza um trabalho (ou seja, que cria um pagamento)
+
     params[:ids].each do |id|
       regulariza_trabalho(Trabalho.find(id))
     end unless params[:ids].blank?

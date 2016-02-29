@@ -24,3 +24,4 @@
 //= require best_in_place.jquery-ui
 //= require_tree .
 //= require helper.js
+//= require config
