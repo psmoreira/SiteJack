@@ -49,7 +49,7 @@ class TrabalhosController < ApplicationController
     respond_to do |format|
       if @trabalho.update(trabalho_params)
         format.html { redirect_to @trabalho, notice: 'Trabalho was successfully updated.' }
-        format.json { head :no_content }
+        format.json { respond_with_bip(@trabalho) }
       else
         format.html { render action: 'edit' }
         format.json { render json: @trabalho.errors, status: :unprocessable_entity }

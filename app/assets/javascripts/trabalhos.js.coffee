@@ -32,7 +32,7 @@ $ ->
     api = table.api()
     $row = $(this).closest('tr')
     rowdata = table.fnGetData($row);
-    valor = rowdata[7]
+    valor = $row.find("span").data().bipValue
     val = $('#footer-trabalhos-table').attr('valortotal')
     num = 0
     if typeof valor == 'string' then num = valor.replace(/,+/g,'.').replace(/[^(0-9.)]+/g, '') * 1 else if typeof valor == 'number' then num = valor else num = 0

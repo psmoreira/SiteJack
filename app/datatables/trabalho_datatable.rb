@@ -34,7 +34,7 @@ class TrabalhoDatatable < AjaxDatatablesRails::Base
           parse_date(record.dataHoraInicio),
           parse_date(record.dataHoraFim),
           record.numHorasPagas,
-          number_to_currency(best_in_place(record,'precoTotal')),
+          best_in_place(record,'precoTotal', :display_with => :number_to_currency),
           check_box_tag('ids[]',record.id, false,{class: "updateFooter", data: {remote: true, url: url_for(action: 'check', controller: 'trabalhos', funcionario_id: @view.params[:funcionario_id], trabalho_id: record.id ) }}),
           link_to('Ver Evento',Rails.application.routes.url_helpers.evento_path(record.evento_id.to_s) ,{:class=>"btn btn-info"})
         ]
@@ -52,6 +52,7 @@ class TrabalhoDatatable < AjaxDatatablesRails::Base
             number_to_currency(record.precoTotal),
             check_box_tag('ids[]',record.id, false,{class: "updateFooter"}),
             link_to('Ver Evento',Rails.application.routes.url_helpers.evento_path(record.evento_id.to_s) ,{:class=>"btn btn-info"})
+
           ]
         end
       end
